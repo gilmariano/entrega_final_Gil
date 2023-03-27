@@ -1,0 +1,15 @@
+
+{% extends "AppPesca/base.html" %}
+
+{% load static %}
+
+{% block main %}
+<h1>Esta seguro de borrar el Registro?</h1>
+<div style="margin-top:40px">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Borrar">
+    </form>
+</div>
+{% endblock %}

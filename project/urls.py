@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from AppPesca.views import index, PescaList, PescaMineList, PescaUpdate, PescaDelete, PescaCreate, Login, Logout, SignUp
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index, name='index'),
+    path('pesca/list', PescaList.as_view(), name='pescado-list'),
+    path('pesca/list', PescaMineList.as_view(), name='pescado-mine'),
+    path('pesca/<pk>/update', PescaUpdate.as_view(), name='pescado-update'),
+    path('pesca/<pk>/delete', PescaDelete.as_view(), name='pescado-delete'),
+    path('pesca/create', PescaCreate.as_view(), name='pescado-create'),
+    path('login/', Login.as_view(), name='login'),
+    path('logout/', Logout.as_view(), name='logout'),
+    path('signup/', SignUp.as_view(), name='signup'),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
