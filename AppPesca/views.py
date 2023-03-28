@@ -9,6 +9,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 def index(request):
     return render(request, "AppPesca/index.html")
 
+def about(request):
+    return render(request, "AppPesca/about.html")
+
 
 class PescaList(ListView):
     model = Pesca

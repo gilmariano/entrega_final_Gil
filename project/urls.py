@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppPesca.views import index, PescaList, PescaMineList, PescaUpdate, PescaDelete, PescaCreate, Login, Logout, SignUp, ProfileCreate, ProfileUpdate
+from AppPesca.views import index, PescaList, PescaMineList, PescaUpdate, PescaDelete, PescaCreate, Login, Logout, SignUp, ProfileCreate, ProfileUpdate, about
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('about/', about, name= 'about'),
     path('pesca/list', PescaList.as_view(), name='pescado-list'),
     path('pesca/list', PescaMineList.as_view(), name='pescado-mine'),
     path('pesca/<pk>/update', PescaUpdate.as_view(), name='pescado-update'),
