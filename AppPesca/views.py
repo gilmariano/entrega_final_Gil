@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from AppPesca.models import Pesca
+from AppPesca.models import Pesca, Profile
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
@@ -74,5 +74,24 @@ class SignUp(CreateView):
 
 class Logout(LogoutView):
     template_name = "registration/logout.html"
+
+
+class ProfileCreate(CreateView):
+    model = Profile
+    success_url = reverse_lazy('pescado-list')
+    fields = ['avatar']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+class ProfileUpdate(UserPassesTestMixin, UpdateView):
+    model = Profile
+    success_url = reverse_lazy ('pescado-list')
+    fields = ['avatar']
+
+    def test_func(self):
+        return Profile.objects.filter(user=self.request.user).exists()
+
 
 
