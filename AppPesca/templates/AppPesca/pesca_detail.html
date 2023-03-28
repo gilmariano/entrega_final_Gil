@@ -1,0 +1,16 @@
+{% extends "AppPesca/base.html" %}
+
+{% load static %}
+
+{% block main %}
+
+<div class="d-flex justify-content-center">
+    <div class="col col-8" style="text-align: center;">
+        <h1>Detalle del post</h1>
+        <h1 class="mt-5">{{ pescado.nombre }}</h1>
+        <p><img height="256px" src="{{pescado.image_url}}"></p>
+        <p class="lead">{{ pescado.peso}}kg</p>
+        <p class="lead">{{ pescado.detalle}}</p>
+    </div>
+</div>
+{% endblock %}
