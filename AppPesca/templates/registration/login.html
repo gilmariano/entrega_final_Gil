@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block main %}
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
@@ -11,6 +12,11 @@
           <h4 class="card-title">Iniciar sesión</h4>
         </div>
         <div class="card-body">
+          {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+              ¡Error al iniciar sesión! Por favor, verifica tu usuario y contraseña.
+            </div>
+          {% endif %}
           <form method="POST">
             {% csrf_token %}
             <div class="form-group row">

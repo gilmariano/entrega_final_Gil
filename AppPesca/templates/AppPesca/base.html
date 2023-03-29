@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Album example · Bootstrap v5.3</title>
+    <title>Blog Pesca</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
@@ -88,17 +88,30 @@
 
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
-      <a href="{% url 'pescado-list' %}" class="navbar-brand d-flex align-items-center">
+
+       <a href="{% url 'pescado-list' %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>Home</strong>
+        <strong>Todos los Posts</strong>
       </a>
 
       {% if user.is_authenticated %}
+
+      {%if user.profile.avatar_url %}
+      <img src="{{user.profile.avatar_url}}" height="144" width="144">
+      {% else %}
+      <a class="navbar-brand" href="{% url 'profile-create' %}">Sin avatar</a>
+      {% endif %}
+
       <a href="{% url 'pescado-create' %}" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
         <strong>Cargar Pesca</strong>
       </a>
       {% if user.profile %}
+      <a href="{% url 'pescado-mine' %}" class="navbar-brand d-flex align-items-center">
+        
+        <strong>Mis Pescas</strong>
+      </a>
+
       <a href="{% url 'profile-update' user.profile.id %}" class="navbar-brand d-flex align-items-center">
         
         <strong>Profile</strong>
@@ -119,7 +132,7 @@
 
       <a href="{% url 'logout' %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>Logout</strong>
+        <strong>{{ user.username }} | Logout</strong>
       </a>
       {% else %}
       <a href="{% url 'login' %}" class="navbar-brand d-flex align-items-center">
