@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppPesca.views import index, PescaList, PescaMineList, PescaUpdate, PescaDelete, PescaCreate, Login, Logout, SignUp, ProfileCreate, ProfileUpdate, about, PescaDetail, MensajeList, MensajeCreate, MensajeDelete
+from AppPesca.views import index, PescaList, PescaMineList, PescaUpdate, PescaDelete, PescaCreate, Login, Logout, SignUp, ProfileCreate, ProfileUpdate, about, PescaDetail, MensajeList, MensajeCreate, MensajeDelete, PescaSearch
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -37,6 +37,8 @@ urlpatterns = [
     path('mensaje/list', MensajeList.as_view(), name="mensaje-list"),
     path('mensaje/create', MensajeCreate.as_view(), name="mensaje-create"),
     path('mensaje/<pk>/delete', MensajeDelete.as_view(), name="mensaje-delete"),
+    path('search/', PescaSearch.as_view(), name='search'),
+    
 ]
 
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if pescados %}
+        <h2>Resultados de la búsqueda:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Propietario</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pescado in pescados %}
+                    <tr>
+                        <td>{{ pescado.id }}</td>
+                        <td>{{ pescado.nombre }}</td>
+                        <td>{{ pescado.propietario.username }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay publicaciones que coincidan con la búsqueda.</p>
+    {% endif %}
+{% endblock %}

@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from AppPesca.models import Pesca, Profile, Mensaje
 from AppPesca.forms import PostForm
@@ -67,14 +68,26 @@ class PescaCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+
 class PescaSearch(ListView):
     model = Pesca
     context_object_name = "pescados"
+    template_name = "pesca_search.html"
 
     def get_queryset(self):
         criterio = self.request.GET.get("criterio")
-        result = Pesca.objects.filter(nombre=criterio).all()
+        if criterio:
+            result = Pesca.objects.filter(
+                Q(nombre__icontains=criterio) |
+                Q(detalle__icontains=criterio) |
+                Q(peso__icontains=criterio) |
+                Q(propietario__username__icontains=criterio)
+            )
+        else:
+            result = []
         return result
+    
+
 
 class Login(LoginView):
     next_page = reverse_lazy("pescado-list")
