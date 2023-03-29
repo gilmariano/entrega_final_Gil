@@ -3,9 +3,42 @@
 {% load static %}
 
 {% block main %}
-<form method="post">
+
+<div class="form-container">
+  <h1 class="form-title">Registro de nuevo pescador</h1>
+  <form method="post" class="form">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Registrarme">
-</form>
+    <input type="submit" value="Registrarme" class="btn-submit">
+  </form>
+</div>
+<style>
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-submit {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-title {
+  text-align: center;
+}
+</style>
 {% endblock %}

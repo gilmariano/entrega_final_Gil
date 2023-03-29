@@ -1,17 +1,27 @@
 {% extends "AppPesca/base.html" %}
-
 {% load static %}
 
- {% block main %}
- <h1> Mis Mensajes </h1>
-<ul>
-    {%  for mensaje in mensajes  %}
-    <li> Mensaje de: {{mensaje.email}} 
-        <br> 
-        {{ mensaje.mensaje }}
-        <br>
-        <a href="{% url 'mensaje-delete' mensaje.id %}">Borrar</a>
-    </li>
-    {% endfor %}
-</ul>
+{% block main %}
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <h1 class="text-center mb-4">Mis Mensajes</h1>
+        {% if mensajes %}
+          <ul class="list-group">
+            {% for mensaje in mensajes %}
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                  <span><strong>Mensaje de:</strong> {{ mensaje.email }}</span>
+                  <a href="{% url 'mensaje-delete' mensaje.id %}" class="btn btn-sm btn-danger">Borrar</a>
+                </div>
+                <p class="my-3">{{ mensaje.mensaje }}</p>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-center">No tienes mensajes.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 {% endblock %}

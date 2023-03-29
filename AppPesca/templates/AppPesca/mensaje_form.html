@@ -3,9 +3,25 @@
 {% load static %}
 
 {% block main %}
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Enviar">
-</form>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm" style="background-color: #ffffff;">
+          <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">Envía un mensaje a otro pescador</h3>
+          </div>
+          <div class="card-body" style="color: rgb(5, 0, 0);">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{form.as_p}}
+              <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
+
