@@ -12,7 +12,7 @@ class Pesca(models.Model):
     peso = models.FloatField()
     imagen = models.ImageField(upload_to="lista", null=True, blank=True)
     propietario = models.ForeignKey(to=User, on_delete=models.CASCADE , related_name = "propietario")
-    created_at = models.DateTimeField(default=timezone.now)
+    creado_el = models.DateTimeField(auto_now_add=True)
 
     @property
     def image_url(self):

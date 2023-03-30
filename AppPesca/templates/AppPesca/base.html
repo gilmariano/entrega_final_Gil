@@ -89,18 +89,19 @@
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
 
+      <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center">
+        
+        <strong>Home</strong>
+      </a>
+
        <a href="{% url 'pescado-list' %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>Todos los Posts</strong>
+        <strong>Todas las Pescas</strong>
       </a>
 
       {% if user.is_authenticated %}
 
-      {%if user.profile.avatar_url %}
-      <img src="{{user.profile.avatar_url}}" height="144" width="144">
-      {% else %}
-      <a class="navbar-brand" href="{% url 'profile-create' %}">Sin avatar</a>
-      {% endif %}
+     
 
       <a href="{% url 'pescado-create' %}" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
@@ -114,7 +115,7 @@
 
       <a href="{% url 'profile-update' user.profile.id %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>Profile</strong>
+        <strong>Perfil</strong>
       </a>
 
       {% else %}
@@ -130,6 +131,12 @@
         <strong>Mis Mensajes</strong>
       </a>
 
+      {%if user.profile.avatar_url %}
+      <img src="{{user.profile.avatar_url}}" height="75" width="75">
+      {% else %}
+      <a class="navbar-brand" href="{% url 'profile-create' %}">Sin avatar</a>
+      {% endif %}
+
       <a href="{% url 'logout' %}" class="navbar-brand d-flex align-items-center">
         
         <strong>{{ user.username }} | Logout</strong>
@@ -137,22 +144,22 @@
       {% else %}
       <a href="{% url 'login' %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>Login</strong>
+        <strong>Iniciar Sesion</strong>
       </a>
       <a href="{% url 'signup' %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>Signup</strong>
+        <strong>Registrarme</strong>
       </a>
       {% endif %}
 
       <a href="{% url 'mensaje-create' %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>Send Message</strong>
+        <strong>Enviar Mensaje</strong>
       </a>
 
       <a href="{% url 'about' %}" class="navbar-brand d-flex align-items-center">
         
-        <strong>About</strong>
+        <strong>Acerca de</strong>
       </a>
 
       <form method="get" action="{% url 'pescado-search' %}">

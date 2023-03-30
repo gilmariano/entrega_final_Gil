@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render
 from AppPesca.models import Pesca, Profile, Mensaje
-from AppPesca.forms import PostForm
+from AppPesca.forms import PostForm, SearchForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
@@ -148,6 +148,6 @@ class IndexView(ListView):
     context_object_name = 'pescados'
 
     def get_queryset(self):
-        return Pesca.objects.order_by('-created_at').all()[:2]
+        return Pesca.objects.order_by('-creado_el').all()[:2]
 
 

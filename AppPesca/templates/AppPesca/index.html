@@ -4,14 +4,17 @@
 
 {% block main %}
 <main>
+  
   <div class="album py-5 bg-light">
     <div class="container">
       {% block cards %}
+      
       <ul>
         {% for pesca in pescados %}
-          <li>{{ pesca.nombre }} - {{ pesca.propietario.username }} - {{ pesca.created_at }}</li>
+          <li>{{ pesca.nombre }} - {{ pesca.propietario.username }} - {{ pesca.creado_el }}</li>
         {% endfor %}
       </ul>
+      
       {% endblock %}
     </div>
   </div>
