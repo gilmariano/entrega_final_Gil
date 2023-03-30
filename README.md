@@ -1,6 +1,6 @@
 # Proyecto Final Gil Mariano
 
-Este es el readme del proyecto Final de Gil Mariano.
+Este es el readme del proyecto Final de Mariano Gil.
 
 ## Barra de navegación
 
@@ -8,7 +8,7 @@ Este es el readme del proyecto Final de Gil Mariano.
 - Todas las Pescas: te permite acceder a una vista general de todos los posteos. Si haces clic en el botón "detalle", se mostrará información adicional.
 - Iniciar Sesión: te lleva al sistema de inicio de sesión para usuarios registrados.
 - Registrarme: te lleva al sistema de registro para nuevos usuarios.
-- Enviar Mensaje: te permite enviar mensajes a otros usuarios del blog, independientemente de si están registrados o no.
+- Enviar Mensaje: te permite enviar mensajes a usuarios ya registrados del blog. 
 - Acerca de: te muestra información general sobre el blog.
 
 ## Funcionalidades disponibles para usuarios registrados
