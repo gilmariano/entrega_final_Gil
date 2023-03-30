@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppPesca.views import index, PescaList, PescaMineList, PescaUpdate, PescaDelete, PescaCreate, Login, Logout, SignUp, ProfileCreate, ProfileUpdate, about, PescaDetail, MensajeList, MensajeCreate, MensajeDelete, PescaSearch
+from AppPesca.views import index, PescaList, PescaMineList, PescaUpdate, PescaDelete, PescaCreate, Login, Logout, SignUp, ProfileCreate, ProfileUpdate, about, PescaDetail, MensajeList, MensajeCreate, MensajeDelete, PescaSearch, IndexView
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    path('', IndexView.as_view(), name='index'),
+
     path('about/', about, name= 'about'),
     path('pesca/list', PescaList.as_view(), name='pescado-list'),
     path('pesca/mine', PescaMineList.as_view(), name='pescado-mine'),
@@ -37,7 +38,7 @@ urlpatterns = [
     path('mensaje/list', MensajeList.as_view(), name="mensaje-list"),
     path('mensaje/create', MensajeCreate.as_view(), name="mensaje-create"),
     path('mensaje/<pk>/delete', MensajeDelete.as_view(), name="mensaje-delete"),
-    path('search/', PescaSearch.as_view(), name='search'),
+    path('search/', PescaSearch.as_view(), name='pescado-search'),
     
 ]
 

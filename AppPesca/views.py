@@ -142,5 +142,12 @@ class MensajeList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         import pdb; pdb.set_trace
         return Mensaje.objects.filter(destinatario=self.request.user).all()
+    
+class IndexView(ListView):
+    template_name = 'index.html'
+    context_object_name = 'pescados'
+
+    def get_queryset(self):
+        return Pesca.objects.order_by('-created_at').all()[:2]
 
 

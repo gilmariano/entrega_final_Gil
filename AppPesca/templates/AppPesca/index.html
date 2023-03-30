@@ -1,25 +1,20 @@
-
 {% extends "AppPesca/base.html" %}
 
 {% load static %}
 
 {% block main %}
 <main>
-
-  
   <div class="album py-5 bg-light">
     <div class="container">
-  
-        {% block cards %}
-        
-      
-
-        {% endblock %}
-
-      </div>
+      {% block cards %}
+      <ul>
+        {% for pesca in pescados %}
+          <li>{{ pesca.nombre }} - {{ pesca.propietario.username }} - {{ pesca.created_at }}</li>
+        {% endfor %}
+      </ul>
+      {% endblock %}
     </div>
-  
-  </main>
-
+  </div>
+</main>
 {% endblock %}
 

@@ -155,7 +155,7 @@
         <strong>About</strong>
       </a>
 
-      <form method="get" action="{% url 'search' %}">
+      <form method="get" action="{% url 'pescado-search' %}">
         {% csrf_token %}
         <input type="text" name="criterio" placeholder="Buscar...">
         <button type="submit">Buscar</button>

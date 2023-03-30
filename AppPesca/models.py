@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # Create your models here.
+
 
 class Pesca(models.Model):
     nombre = models.CharField(max_length=50)
@@ -10,6 +12,7 @@ class Pesca(models.Model):
     peso = models.FloatField()
     imagen = models.ImageField(upload_to="lista", null=True, blank=True)
     propietario = models.ForeignKey(to=User, on_delete=models.CASCADE , related_name = "propietario")
+    created_at = models.DateTimeField(default=timezone.now)
 
     @property
     def image_url(self):

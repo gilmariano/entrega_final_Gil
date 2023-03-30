@@ -7,6 +7,7 @@
 <div class="d-flex justify-content-center">
     <div class="col col-8" style="text-align: center;">
         <h1>Detalle del post</h1>
+        <p class="lead">Fecha: {{ pescado.created_at }}</p>
         <h1 class="mt-5">{{ pescado.nombre }}</h1>
         <p><img height="256px" src="{{pescado.image_url}}"></p>
         <p class="lead">Pescador: {{ autor }}</p>
