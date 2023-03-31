@@ -8,8 +8,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-def index(request):
-    return render(request, "AppPesca/index.html")
 
 def about(request):
     return render(request, "AppPesca/about.html")
@@ -17,9 +15,11 @@ def about(request):
 
 class PescaList(ListView):
     model = Pesca
+    template_name = "AppPesca/pesca_list.html"
     context_object_name = "pescados"
 
 class PescaMineList(LoginRequiredMixin, PescaList):
+    template_name = "AppPesca/pesca_mine_list.html"
     
     def get_queryset(self):
         return Pesca.objects.filter(propietario=self.request.user.id).all()
@@ -144,7 +144,7 @@ class MensajeList(LoginRequiredMixin, ListView):
         return Mensaje.objects.filter(destinatario=self.request.user).all()
     
 class IndexView(ListView):
-    template_name = 'index.html'
+    template_name = 'AppPesca/index.html'
     context_object_name = 'pescados'
 
     def get_queryset(self):
